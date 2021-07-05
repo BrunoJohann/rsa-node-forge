@@ -5,19 +5,19 @@ const chalk = require('chalk')
 
 const myArgs = process.argv.slice(2);
 
+function encryptFromPem(message) {
+    const pathFilePublicKey = path.resolve(__dirname, 'keys', 'public.pem')
+    const pem = fs.readFileSync(pathFilePublicKey, 'utf8').toString()
+    const publicKey = forge.pki.publicKeyFromPem(pem)
+    return forge.util.encode64(publicKey.encrypt(message));
+}
+
 function decryptFromPem(encryptedMessage) {
     const pathFilePrivateKey = path.resolve(__dirname, 'keys', 'private.pem')
     const pem = fs.readFileSync(pathFilePrivateKey, 'utf8').toString()
     const privateKey = forge.pki.privateKeyFromPem(pem)
     const messageDecoded = forge.util.decode64(encryptedMessage)
     return privateKey.decrypt(messageDecoded)
-}
-
-function encryptFromPem(message) {
-    const pathFilePublicKey = path.resolve(__dirname, 'keys', 'public.pem')
-    const pem = fs.readFileSync(pathFilePublicKey, 'utf8').toString()
-    const publicKey = forge.pki.publicKeyFromPem(pem)
-    return forge.util.encode64(publicKey.encrypt(message));
 }
 
 (() => {
