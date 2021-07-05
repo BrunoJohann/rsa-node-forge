@@ -13,5 +13,4 @@ const generateRsaKeyPair = async () => {
     fs.writeFileSync(pathFilePrivateKey, forge.pki.privateKeyToPem(privateKey));
 }
 
-generateRsaKeyPair();
-console.log('Done!');
+generateRsaKeyPair().then(() => console.log('Done!'));
