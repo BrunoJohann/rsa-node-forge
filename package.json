@@ -1,0 +1,17 @@
+{
+  "name": "rsa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "rsa": "node src/index.js",
+    "keyPair": "node src/generateRsaKeyPair.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "node-forge": "^0.10.0"
+  }
+}
