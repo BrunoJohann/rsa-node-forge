@@ -21,7 +21,7 @@ function decryptFromPem(encryptedMessage) {
 }
 
 (() => {
-    if (!myArgs) return console.log('Run: npm run rsa <any arg>');
+    if (!myArgs.length) return console.log('Run: npm run rsa <any arg>');
     const concatedArgs = myArgs.join(' ');
     const encryptedArg = encryptFromPem(concatedArgs);
     const decryptedArg = decryptFromPem(encryptedArg);
